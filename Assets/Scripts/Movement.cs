@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public Animator myAnimator = null;
     public CharacterController2D controller = null;
 
     float horizontal = 0f;
@@ -14,6 +15,7 @@ public class Movement : MonoBehaviour
 
     private void Awake()
     {
+        myAnimator = GetComponent<Animator>();
         controller = GetComponent<CharacterController2D>();
     }
 
@@ -22,10 +24,18 @@ public class Movement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             jump = true;
+            myAnimator.SetBool("Jump", true);
         }
+
+        myAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
+    }
+
+    public void OnLanding()
+    {
+        myAnimator.SetBool("Jump", false);
     }
 
     private void FixedUpdate()

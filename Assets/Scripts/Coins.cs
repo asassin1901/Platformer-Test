@@ -9,6 +9,13 @@ public class Coins : MonoBehaviour
 
     public float coins;
 
+    Animator coinAnim = null;
+
+    private void Awake()
+    {
+        coinAnim = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         coinCount.text = coins.ToString();
@@ -16,7 +23,14 @@ public class Coins : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        coinAnim.SetTrigger("Pick");
         coinCount.GetComponent<Coins>().coins++;
+
+        Invoke("Kill", 0.5f);
+    }
+
+    private void Kill()
+    {
         Destroy(gameObject);
     }
 }
