@@ -23,10 +23,13 @@ public class Coins : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Player")
+        {
         coinAnim.SetTrigger("Pick");
         coinCount.GetComponent<Coins>().coins++;
 
         Invoke("Kill", 0.5f);
+        }
     }
 
     private void Kill()

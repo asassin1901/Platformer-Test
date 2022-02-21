@@ -41,6 +41,14 @@ public class Combat : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemies>().TakeDamage(damage);
+            if(enemy.transform.position.x > transform.position.x)
+            {
+                enemy.attachedRigidbody.AddForce(new Vector2(2f, 2f), ForceMode2D.Impulse);
+            }
+            else
+            {
+                enemy.attachedRigidbody.AddForce(new Vector2(-2f, 2f), ForceMode2D.Impulse);
+            }
         }
     }
 
