@@ -1,3 +1,2 @@
-# Zadanie-Bojowe
-# I always forget that I generate this file. It's nice to see you, I hope you have a wonderfull
-# day but nothing important in here
+# Platformer Test
+This is a small platformer test where I wanted to test tile maping
